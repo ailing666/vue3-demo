@@ -1,36 +1,32 @@
-<!--  -->
 <template>
-  <div id="app">
-    <div>{{num}}</div>
-    <button @click="btnClick">按钮</button>
-  </div>
+  <div id="app">生命周期</div>
 </template>
 
 <script>
+import { onBeforeMount, onMounted } from 'vue'
 export default {
   name:'App',
-  /**
-   * 组合API的起点
-   * 可以理解为再beforeCreate钩子执行前执行，组件实例创建前
-   * 不能使用this
-   * 模板中需要使用功能的数据和函数，需要在setup中返回 
-   */
-  setup() {
-    console.log('setup执行',this); // 无法使用this
-    // 数据
-    let num = 666
-    const btnClick = () =>{
-      console.log('btnClick');
-    }
-    // 函数
-    return {
-      num, // 模板中使用需返回，对象格式   
-      btnClick
-    }
-  },
-  beforeCreate() {
-    console.log('beforeCreate执行');
-  },
+  setup(){
+    /**
+     * setup 创建实例前
+     * onBeforeMount  挂载DOM前
+     * onMounted 挂载DOM后
+     * onBeforeUpdate 更新组件前
+     * onUpdated 更新组件后
+     * onBeforeUnmount 卸载销毁前
+     * onUnmounted  卸载销毁后
+     */
+    console.log('setup---起点',this,document.getElementById('app'))
+    onBeforeMount(()=>{
+      console.log('onBeforeMount---DOM渲染前',this,document.getElementById('app'))
+    })
+    onMounted(()=>{
+      console.log('onMounted---DOM渲染后1',this,document.getElementById('app'))
+    })
+    onMounted(()=>{
+      console.log('onMounted---DOM渲染后2',this,document.getElementById('app'))
+    })
+  }
 }
 
 </script>

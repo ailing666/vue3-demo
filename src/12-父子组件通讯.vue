@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Son from './Son.vue'
+import Son from './12-Son.vue'
 import { ref } from 'vue'
 export default {
   name: 'App',

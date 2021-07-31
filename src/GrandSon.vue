@@ -1,7 +1,8 @@
 <template>
-  <div id="son">
-    <h1>子组件</h1>
+  <div>
+    <h1>孙组件</h1>
     {{ num }}
+    <button @click="grandClick">grandClick</button>
   </div>
 </template>
 
@@ -12,7 +13,11 @@ export default {
   // 子组件触发父组件的方法
   setup () {
     const num = inject('num')
-    return { num }
+    const changeNum = inject('changeNum')
+    const grandClick = () => {
+      changeNum(12)
+    }
+    return { num, grandClick }
   }
 }
 </script>

@@ -9,7 +9,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    // 定义一个响应式的对象
+    // 定义一个响应式的对象，复杂数据类型 
     const obj = reactive({
       name:'loveZero',
       age:666 

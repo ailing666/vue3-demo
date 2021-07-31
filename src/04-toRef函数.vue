@@ -22,7 +22,7 @@ export default {
     console.log('name: ', name);
     const btnClick = () =>{
       age += 1
-      name.value = 'hello'
+      name.value = 'hello' // 修改值时，需要 .value
     }
 
     // 函数

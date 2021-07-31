@@ -9,6 +9,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
+    // 当明确的知道需要的是一个响应式对象时，就是用reactive
     // 定义一个响应式的对象，复杂数据类型 
     const obj = reactive({
       name:'loveZero',

@@ -4,13 +4,15 @@
     <div ref="dom">box</div>
     <!-- 循环dom -->
     <ul>
-      <li v-for="i in 5" :key="i" :ref="getDom">第{{ i }}个</li>
+      <li v-for="i in count" :key="i" :ref="getDom">第{{ i }}个</li>
     </ul>
+    <button @click="count++">{{ count }}</button>
+    <button @click="logList">logList</button>
   </div>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
+import { onMounted, onBeforeUpdate, ref } from 'vue'
 export default {
   name: 'App',
   setup () {
@@ -21,17 +23,28 @@ export default {
     })
 
     // 获取多个dom
-    const domList = []
+    let domList = []
     const getDom = el => {
       domList.push(el)
     }
     onMounted(() => {
       console.log(domList)
     })
+    // 在更新前，将list清空
+    onBeforeUpdate(() => {
+      domList = []
+    })
 
+    let count = ref(4)
+
+    const logList = () => {
+      console.log(domList)
+    }
     return {
+      count,
       dom,
-      getDom
+      getDom,
+      logList
     }
   }
 }
